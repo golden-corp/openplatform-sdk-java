@@ -4,7 +4,7 @@ package com.golden;
 
         enum URL {
 
-            TEST("https://openapi.yewifi.com"),
+            TEST("http://openapi-test.wetax.com.cn"),
 
             PROD("https://openapi.wetax.com.cn");
 

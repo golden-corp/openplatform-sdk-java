@@ -28,16 +28,22 @@ public class Sdk {
     private String env;
     private String appkey;
     private String appsecret;
+    private String baseUrl;
     private String ver;
 
-    public Sdk(String appkey, String appSecret, String ver, String env)
+    public Sdk(String appkey, String appSecret, String env)
     {
         this.env = env;
-        this.ver = ver;
         this.appkey = appkey;
         this.appsecret = appSecret;
+        this.ver = "1.0.0";   
     }
-
+     
+    public Sdk(String appkey,String appSecret,String env,String ver)
+    {
+        this(appkey, appSecret, env);
+        this.ver=ver;
+    }
 
     public String genereateSign(JSONObject json, Long timestamp) throws UnsupportedEncodingException
     {
@@ -79,30 +85,40 @@ public class Sdk {
         this.env = env;
         return this;
     }
+    
+    public void setBaseUrl(String url) {
+    	this.baseUrl = url; 
+    }
 
+    public String getBaseUrl() {
+    	if(this.baseUrl!=null) {
+    		return this.baseUrl;
+    	}
+    	if( this.env.equals("test" )){
+    		return  EnvEnum.URL.TEST.getUrl();
+        }else{
+        	return  EnvEnum.URL.PROD.getUrl();
+        }
+    }
+    
     public JSONObject httpPost(String url, JSONObject json) throws RuntimeException,IOException
     {
         Long timestamp = System.currentTimeMillis() / 1000;
         String sign = genereateSign(json, timestamp);
         CloseableHttpClient httpclient = HttpClientBuilder.create().build();
-        String requestUrl;
-        if( this.env.equals("test" )){
-            requestUrl =  EnvEnum.URL.TEST.getUrl();
-        }else{
-            requestUrl =  EnvEnum.URL.PROD.getUrl();
-        }
-        requestUrl += url + "?signature=" + sign + "&appkey=" + this.appkey + "&timestamp=" + timestamp + "&ver=" + this.ver;
+        String requestUrl = this.getBaseUrl();
+        requestUrl += url + "?ver="+this.ver+ "&signature=" + sign + "&appkey=" + this.appkey + "&timestamp=" + timestamp;
         //System.out.println(requestUrl);
         HttpPost post = new HttpPost(requestUrl);
         JSONObject response = null;//System.out.println(json.toString());
         StringEntity s = new StringEntity(json.toString(), "utf-8");
-        System.out.println(json.toString());
+        //System.out.println(json.toString());
         s.setContentEncoding("utf-8");
         s.setContentType("application/json");
         post.setEntity(s);
         HttpResponse res = httpclient.execute(post);
         if(res.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-            String result = EntityUtils.toString(res.getEntity());
+            String result = EntityUtils.toString(res.getEntity(), "utf-8");
             response = JSONObject.fromObject(result);
         }
         return response;

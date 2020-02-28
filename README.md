@@ -2,8 +2,8 @@
 ===============================
 支持JDK >= 1.7
 
-[下载jar包](http://kpcenter.yewifi.com/upload/201907/20190717/20190717145830_1372846368.zip)
-
+[下载jar包](https://golden-static-files-1258944054.cos.ap-guangzhou.myqcloud.com/openPlatfrom/developerPlatform-1.0.1-jar-with-dependencies.jar)
+  
 导入jar包
 
 - 快速开具蓝票

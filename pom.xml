@@ -6,7 +6,7 @@
 
     <groupId>com.golden</groupId>
     <artifactId>developerPlatform</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
@@ -29,6 +29,7 @@
         </dependency>
     </dependencies>
     <build>
+    	<sourceDirectory>src/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

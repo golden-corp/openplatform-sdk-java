@@ -24,6 +24,11 @@ public class InvoiceBlueGoodsInfo {
 
     private String zeroTaxFlag;
 
+    private String preferentialPolicyFlag;
+    
+    private String vatSpecialManagement;
+    
+
     @ApiField(name="name")
     public String getName() {
         return name;
@@ -133,4 +138,26 @@ public class InvoiceBlueGoodsInfo {
         this.zeroTaxFlag = zeroTaxFlag;
         return this;
     }
+
+    @ApiField(name="preferential_policy_flag")
+	public String getPreferentialPolicyFlag() {
+		return preferentialPolicyFlag;
+	}
+
+	public InvoiceBlueGoodsInfo setPreferentialPolicyFlag(String preferentialPolicyFlag) {
+		this.preferentialPolicyFlag = preferentialPolicyFlag;
+		return this;
+	}
+	
+    @ApiField(name="vat_special_management")
+	public String getVatSpecialManagement() {
+		return vatSpecialManagement;
+	}
+
+	public InvoiceBlueGoodsInfo setVatSpecialManagement(String vatSpecialManagement) {
+		this.vatSpecialManagement = vatSpecialManagement;
+		return this;
+	}
+    
+    
 }
