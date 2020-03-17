@@ -4,7 +4,7 @@ import java.util.List;
 
 public class InvoiceBlue {
 
-    private String taxpayerNum;
+    private String sellerTaxpayerNum;
 
     private String sellerAddress;
 
@@ -58,13 +58,13 @@ public class InvoiceBlue {
 
     private List<InvoiceBlueGoodsInfo> GoodsInfos;
 
-    @ApiField(name="taxpayer_num")
-    public String getTaxpayerNum() {
-        return taxpayerNum;
+    @ApiField(name="seller_taxpayer_num")
+    public String getSellerTaxpayerNum() {
+        return sellerTaxpayerNum;
     }
 
-    public InvoiceBlue setTaxpayerNum(String taxpayerNum) {
-        this.taxpayerNum = taxpayerNum;
+    public InvoiceBlue setSellerTaxpayerNum(String sellerTaxpayerNum) {
+        this.sellerTaxpayerNum = sellerTaxpayerNum;
         return this;
     }
 
