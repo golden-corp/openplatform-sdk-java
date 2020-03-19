@@ -4,6 +4,8 @@ import java.util.List;
 
 public class InvoiceBlue {
 
+    private String sellName;
+
     private String sellerTaxpayerNum;
 
     private String sellerAddress;
@@ -14,15 +16,13 @@ public class InvoiceBlue {
 
     private String sellerBankAccount;
 
-    private int buyerTitleType;
-
-    private String orderId;
-
-    private String bUserId;
-
-    private String buyerTaxCode;
+    private int titleType;
 
     private String buyerTitle;
+
+    private String buyerTaxpayerNum;
+
+    private String buyerAddress;
 
     private String buyerBankName;
 
@@ -32,31 +32,45 @@ public class InvoiceBlue {
 
     private String buyerEmail;
 
-    private String buyerAddress;
+    private String takerPhone;
 
-    private String extra;
-
-    private String callbackUrl;
-
-    private String cashier;
-
-    private String checker;
-
-    private String invoicer;
-
-    private int tradeType;
-
-    private String machineNo;
-
-    private String etrData;
+    private String orderId;
 
     private String invoiceTypeCode;
 
-    private String specialInvoiceKind;
+    private String callbackUrl;
+
+    private String drawer;
+
+    private String payee;
+
+    private String checker;
 
     private String terminalCode;
 
-    private List<InvoiceBlueGoodsInfo> GoodsInfos;
+    private String userOpenid;
+
+    private String specialInvoiceKind;
+
+    private String zsfs;
+
+    private int deduction;
+
+    private int amountHasTax;
+
+    private int taxAmount;
+
+    private int amountWithoutTax;
+    
+    private String remark;
+    
+    private String storeNo;
+    
+    private int template;
+    
+    private InvoiceBlueYunnan info;
+
+    private List<InvoiceBlueGoodsInfo> items;
 
     @ApiField(name="seller_taxpayer_num")
     public String getSellerTaxpayerNum() {
@@ -108,13 +122,13 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="buyer_title_type")
-    public int getBuyerTitleType() {
-        return buyerTitleType;
+    @ApiField(name="title_type")
+    public int getTitleType() {
+        return titleType;
     }
 
-    public InvoiceBlue setBuyerTitleType(int buyerTitleType) {
-        this.buyerTitleType = buyerTitleType;
+    public InvoiceBlue setTitleType(int titleType) {
+        this.titleType = titleType;
         return this;
     }
 
@@ -128,23 +142,14 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="b_user_id")
-    public String getbUserId() {
-        return bUserId;
+
+    @ApiField(name="buyer_taxpayer_num")
+    public String getBuyerTaxpayerNum() {
+        return buyerTaxpayerNum;
     }
 
-    public InvoiceBlue setbUserId(String bUserId) {
-        this.bUserId = bUserId;
-        return this;
-    }
-
-    @ApiField(name="buyer_taxcode")
-    public String getBuyerTaxCode() {
-        return buyerTaxCode;
-    }
-
-    public InvoiceBlue setBuyerTaxCode(String buyerTaxCode) {
-        this.buyerTaxCode = buyerTaxCode;
+    public InvoiceBlue setBuyerTaxpayerNum(String buyerTaxCode) {
+        this.buyerTaxpayerNum = buyerTaxCode;
         return this;
     }
 
@@ -208,16 +213,6 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="extra")
-    public String getExtra() {
-        return extra;
-    }
-
-    public InvoiceBlue setExtra(String extra) {
-        this.extra = extra;
-        return this;
-    }
-
     @ApiField(name="callback_url")
     public String getCallbackUrl() {
         return callbackUrl;
@@ -225,16 +220,6 @@ public class InvoiceBlue {
 
     public InvoiceBlue setCallbackUrl(String callbackUrl) {
         this.callbackUrl = callbackUrl;
-        return this;
-    }
-
-    @ApiField(name="cashier")
-    public String getCashier() {
-        return cashier;
-    }
-
-    public InvoiceBlue setCashier(String cashier) {
-        this.cashier = cashier;
         return this;
     }
 
@@ -248,46 +233,6 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="invoicer")
-    public String getInvoicer() {
-        return invoicer;
-    }
-
-    public InvoiceBlue setInvoicer(String invoicer) {
-        this.invoicer = invoicer;
-        return this;
-    }
-
-    @ApiField(name="trade_type")
-    public int getTradeType() {
-        return tradeType;
-    }
-
-    public InvoiceBlue setTradeType(int tradeType) {
-        this.tradeType = tradeType;
-        return this;
-    }
-
-    @ApiField(name="machine_no")
-    public String getMachineNo() {
-        return machineNo;
-    }
-
-    public InvoiceBlue setMachineNo(String machineNo) {
-        this.machineNo = machineNo;
-        return this;
-    }
-
-    @ApiField(name="etr_data")
-    public String getEtrData() {
-        return etrData;
-    }
-
-    public InvoiceBlue setEtrData(String etrData) {
-        this.etrData = etrData;
-        return this;
-    }
-
     @ApiField(name="invoice_type_code")
     public String getInvoiceTypeCode() {
         return invoiceTypeCode;
@@ -298,7 +243,7 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="invoice_kind")
+    @ApiField(name="special_invoice_kind")
     public String getSpecialInvoiceKind() {
         return specialInvoiceKind;
     }
@@ -318,13 +263,153 @@ public class InvoiceBlue {
         return this;
     }
 
-    @ApiField(name="goods_info")
-    public List<InvoiceBlueGoodsInfo> getGoodsInfos() {
-        return GoodsInfos;
+    @ApiField(name="items")
+    public List<InvoiceBlueGoodsInfo> getItems() {
+        return items;
     }
 
-    public InvoiceBlue setGoodsInfos(List<InvoiceBlueGoodsInfo> goodsInfos) {
-        GoodsInfos = goodsInfos;
+    public InvoiceBlue setItems(List<InvoiceBlueGoodsInfo> goodsInfos) {
+        this.items = goodsInfos;
+        return this;
+    }
+
+    @ApiField(name="sell_name")
+    public String getSellName() {
+        return sellName;
+    }
+
+    public InvoiceBlue setSellName(String sellName) {
+        this.sellName = sellName;
+        return this;
+    }
+
+    @ApiField(name="taker_phone")
+    public String getTakerPhone() {
+        return takerPhone;
+    }
+
+    public InvoiceBlue setTakerPhone(String takerPhone) {
+        this.takerPhone = takerPhone;
+        return this;
+    }
+
+    @ApiField(name="drawer")
+    public String getDrawer() {
+        return drawer;
+    }
+
+    public InvoiceBlue setDrawer(String drawer) {
+        this.drawer = drawer;
+        return this;
+    }
+
+    @ApiField(name="payee")
+    public String getPayee() {
+        return payee;
+    }
+
+    public InvoiceBlue setPayee(String payee) {
+        this.payee = payee;
+        return this;
+    }
+
+    @ApiField(name="user_openid")
+    public String getUserOpenid() {
+        return userOpenid;
+    }
+
+    public InvoiceBlue setUserOpenid(String userOpenid) {
+        this.userOpenid = userOpenid;
+        return this;
+    }
+
+    @ApiField(name="zsfs")
+    public String getZsfs() {
+        return zsfs;
+    }
+
+    public InvoiceBlue setZsfs(String zsfs) {
+        this.zsfs = zsfs;
+        return this;
+    }
+
+    @ApiField(name="deduction")
+    public int getDeduction() {
+        return deduction;
+    }
+
+    public InvoiceBlue setDeduction(int deduction) {
+        this.deduction = deduction;
+        return this;
+    }
+
+    @ApiField(name="amount_has_tax")
+    public int getAmountHasTax() {
+        return amountHasTax;
+    }
+
+    public InvoiceBlue setAmountHasTax(int amountHasTax) {
+        this.amountHasTax = amountHasTax;
+        return this;
+    }
+
+    @ApiField(name="tax_amount")
+    public int getTaxAmount() {
+        return taxAmount;
+    }
+
+    public InvoiceBlue setTaxAmount(int taxAmount) {
+        this.taxAmount = taxAmount;
+        return this;
+    }
+
+    @ApiField(name="amount_without_tax")
+    public int getAmountWithoutTax() {
+        return amountWithoutTax;
+    }
+
+    public InvoiceBlue setAmountWithoutTax(int amountWithoutTax) {
+        this.amountWithoutTax = amountWithoutTax;
+        return this;
+    }
+
+    @ApiField(name="remark")
+    public String getRemark() {
+        return remark;
+    }
+
+    public InvoiceBlue setRemark(String remark) {
+        this.remark = remark;
+        return this;
+    }
+
+    @ApiField(name="store_no")
+    public String getStoreNo() {
+        return storeNo;
+    }
+
+    public InvoiceBlue setStoreNo(String storeNo) {
+        this.storeNo = storeNo;
+        return this;
+    }
+
+    @ApiField(name="template")
+    public int getTemplate() {
+        return template;
+    }
+
+    public InvoiceBlue setTemplate(int template) {
+        this.template = template;
+        return this;
+    }
+
+    @ApiField(name="info")
+    public InvoiceBlueYunnan getInfo() {
+        return info;
+    }
+
+    public InvoiceBlue setInfo(InvoiceBlueYunnan info) {
+        this.info = info;
         return this;
     }
 }

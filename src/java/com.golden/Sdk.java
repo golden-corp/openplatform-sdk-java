@@ -134,7 +134,7 @@ public class Sdk {
             postData.put( field.name(), method.invoke(invoiceBlue, null));
         }
 
-        List<InvoiceBlueGoodsInfo> invoiceBlueGoodsInfo = invoiceBlue.getGoodsInfos();
+        List<InvoiceBlueGoodsInfo> invoiceBlueGoodsInfo = invoiceBlue.getItems();
         JSONObject[] goodsInfos = new JSONObject[invoiceBlueGoodsInfo.size()];
         for(int i=0; i<invoiceBlueGoodsInfo.size(); i++){
             JSONObject goodsInfo = new JSONObject();
@@ -147,7 +147,12 @@ public class Sdk {
             goodsInfos[i] = goodsInfo;
         }
 
-        postData.put("goods_info", goodsInfos);
+        postData.put("items", goodsInfos);
+
+        InvoiceBlueYunnan yunnan = invoiceBlue.getInfo();
+        if(yunnan!=null){
+            postData.put("info", yunnan);
+        }
         return this.httpPost("/invoice/blue", postData);
     }
 
@@ -174,7 +179,7 @@ public class Sdk {
             invoices[i] = invoice;
         }
 
-        postData.put("invoice", invoices);
+        postData.put("invoices", invoices);
         return this.httpPost("/invoice/red", postData);
     }
 

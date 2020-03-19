@@ -2,40 +2,63 @@ package com.golden.request;
 
 public class InvoiceRedInvoice {
 
-    private String  taxpayerNum;
+    private String  sellerTaxpayerNum;
 
-    private String bTradeNo;
+    private String callbackUrl;
 
-    private String gTradeNo;
+    private String orderSn;
 
+    private String orderId;
 
-    @ApiField(name="taxpayer_num")
-    public String getTaxpayerNum() {
-        return taxpayerNum;
+    private String redSerialNo;
+
+    @ApiField(name="seller_taxpayer_num")
+    public String getSellerTaxpayerNum() {
+        return sellerTaxpayerNum;
     }
 
-    public InvoiceRedInvoice setTaxpayerNum(String taxpayerNum) {
-        this.taxpayerNum = taxpayerNum;
+    public InvoiceRedInvoice setSellerTaxpayerNum(String sellerTaxpayerNum) {
+        this.sellerTaxpayerNum = sellerTaxpayerNum;
         return this;
     }
 
-    @ApiField(name="b_trade_no")
-    public String getbTradeNo() {
-        return bTradeNo;
+    @ApiField(name="callback_url")
+    public String getCallbackUrl() {
+        return callbackUrl;
     }
 
-    public InvoiceRedInvoice setbTradeNo(String bTradeNo) {
-        this.bTradeNo = bTradeNo;
+    public InvoiceRedInvoice setCallbackUrl(String callbackUrl) {
+        this.callbackUrl = callbackUrl;
         return this;
     }
 
-    @ApiField(name="g_trade_no")
-    public String getgTradeNo() {
-        return gTradeNo;
+    @ApiField(name="order_sn")
+    public String getOrderSn() {
+        return orderSn;
     }
 
-    public InvoiceRedInvoice setgTradeNo(String gTradeNo) {
-        this.gTradeNo = gTradeNo;
+    public InvoiceRedInvoice setOrderSn(String orderSn) {
+        this.orderSn = orderSn;
+        return this;
+    }
+
+    @ApiField(name="order_id")
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public InvoiceRedInvoice setOrderId(String orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    @ApiField(name="red_serial_no")
+    public String getRedSerialNo() {
+        return redSerialNo;
+    }
+
+    public InvoiceRedInvoice setRedSerialNo(String redSerialNo) {
+        this.redSerialNo = redSerialNo;
         return this;
     }
 }

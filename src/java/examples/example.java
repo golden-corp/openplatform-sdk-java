@@ -12,9 +12,9 @@ public class example {
 
     public static void main(String []args){
         try {
-            Sdk sdk = new Sdk("979ba401daec33d1b3ab", "8431c656b20e07a4441b5c0e1adb9af8", "1.0.0", "prod");
-            JSONObject result = invoiceBlue(sdk);
-            //JSONObject result = invoiceRed(sdk);
+            Sdk sdk = new Sdk("EgDjckWzyGxwIi7e9J1A8LdruWMidFFH", "9Q8744Oe0nv8aw738b3HkjdylYZzNeZOcTz53KI4pchKpqIi","test");
+            //JSONObject result = invoiceBlue(sdk);
+            JSONObject result = invoiceRed(sdk);
             System.out.println(result);
         }catch (IOException e){
             e.printStackTrace();
@@ -25,9 +25,9 @@ public class example {
             JSONObject jsonObject = new JSONObject();
             ArrayList invoices = new ArrayList<JSONObject>();
             JSONObject invoice = new JSONObject();
-            invoice.put("seller_taxpayer_num", "111112222233333");//销方税号
+            invoice.put("seller_taxpayer_num", "911101076819661132");//销方税号
             invoice.put("callback_url", "回掉地址");//销方税号
-            invoice.put("order_sn", "6557136429603008662");//销方税号
+            invoice.put("order_sn", "6645588687037969410");//销方税号
             invoices.add(invoice);
             jsonObject.put("invoices", invoices);
             JSONObject result = sdk.httpPost("/invoice/red", jsonObject);
@@ -36,8 +36,8 @@ public class example {
 
     public static JSONObject invoiceBlue(Sdk sdk) throws IOException{
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("seller_name", "");
-            jsonObject.put("seller_taxpayer_num", "111112222233333");
+            jsonObject.put("seller_name", "JACK测试企业12");
+            jsonObject.put("seller_taxpayer_num", "911101076819661132");
             jsonObject.put("seller_address", "");
             jsonObject.put("seller_tel", "");
             jsonObject.put("seller_bank_name", "");
