@@ -130,6 +130,16 @@ public class InvoiceBlueGoodsInfo {
         return this;
     }
 
+    @ApiField(name="discount")
+    public int getDiscount() {
+        return discount;
+    }
+
+    public InvoiceBlueGoodsInfo setDiscount(int discount) {
+        this.discount = discount;
+        return this;
+    }
+
     @ApiField(name="zero_tax_flag")
     public String getZeroTaxFlag() {
         return zeroTaxFlag;

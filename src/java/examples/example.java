@@ -1,117 +1,97 @@
 package examples;
 
 import com.golden.Sdk;
+import com.golden.request.*;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class example {
 
-    public static void main(String []args){
+    public static void main(String[] args) {
         try {
-            Sdk sdk = new Sdk("EgDjckWzyGxwIi7e9J1A8LdruWMidFFH", "9Q8744Oe0nv8aw738b3HkjdylYZzNeZOcTz53KI4pchKpqIi","test");
-            //JSONObject result = invoiceBlue(sdk);
-            JSONObject result = invoiceRed(sdk);
+            Sdk sdk = new Sdk("EgDjckWzyGxwIi7e9J1A8LdruWMidFFH", "9Q8744Oe0nv8aw738b3HkjdylYZzNeZOcTz53KI4pchKpqIi", "test");
+            JSONObject result = invoiceBlue(sdk);
+            //JSONObject result = invoiceRed(sdk);
             System.out.println(result);
-        }catch (IOException e){
-            e.printStackTrace();
+        } catch (IOException e) {
+                e.printStackTrace();
+        }catch (Exception e) {
+                e.printStackTrace();
         }
     }
 
-    public static JSONObject invoiceRed(Sdk sdk)throws IOException{
-            JSONObject jsonObject = new JSONObject();
-            ArrayList invoices = new ArrayList<JSONObject>();
-            JSONObject invoice = new JSONObject();
-            invoice.put("seller_taxpayer_num", "911101076819661132");//销方税号
-            invoice.put("callback_url", "回掉地址");//销方税号
-            invoice.put("order_sn", "6645588687037969410");//销方税号
-            invoices.add(invoice);
-            jsonObject.put("invoices", invoices);
-            JSONObject result = sdk.httpPost("/invoice/red", jsonObject);
-            return result;
+    public static JSONObject invoiceRed(Sdk sdk) throws IOException {
+        JSONObject jsonObject = new JSONObject();
+        ArrayList invoices = new ArrayList<JSONObject>();
+        JSONObject invoice = new JSONObject();
+        invoice.put("seller_taxpayer_num", "911101076819661132");//销方税号
+        invoice.put("callback_url", "回掉地址");//销方税号
+        invoice.put("order_sn", "6645588687037969410");//销方税号
+        invoices.add(invoice);
+        jsonObject.put("invoices", invoices);
+        JSONObject result = sdk.httpPost("/invoice/red", jsonObject);
+        return result;
     }
 
-    public static JSONObject invoiceBlue(Sdk sdk) throws IOException{
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("seller_name", "JACK测试企业12");
-            jsonObject.put("seller_taxpayer_num", "911101076819661132");
-            jsonObject.put("seller_address", "");
-            jsonObject.put("seller_tel", "");
-            jsonObject.put("seller_bank_name", "");
-            jsonObject.put("seller_bank_account", "");
-            jsonObject.put("title_type", 1);
-            jsonObject.put("buyer_title", "我是抬头");
-            jsonObject.put("buyer_taxpayer_num", "");
-            jsonObject.put("buyer_address", "");
-            jsonObject.put("buyer_bank_name", "");
-            jsonObject.put("buyer_bank_account", "");
-            jsonObject.put("buyer_phone", "");
-            jsonObject.put("buyer_email", "");
-            jsonObject.put("taker_phone", "");
-            jsonObject.put("taker_name", "");
-            jsonObject.put("order_id", "test001asdfsadfasdf");
-            jsonObject.put("invoice_type_code", "032");
-            jsonObject.put("callback_url", "http://www.xx.com");
-            jsonObject.put("drawer", "小刘");
-            jsonObject.put("payee", "小刘");
-            jsonObject.put("checker", "小刘");
-            jsonObject.put("trade_type", 0);
-            jsonObject.put("user_openid", "");
-            jsonObject.put("special_invoice_kind", "");
-            jsonObject.put("terminal_code", "");
-            jsonObject.put("amount_has_tax", 9508);
-            jsonObject.put("tax_amount", 864);
-            jsonObject.put("amount_without_tax", 8644);
-            jsonObject.put("remark", "");
+    public static JSONObject invoiceBlue(Sdk sdk) throws RuntimeException,IOException,IllegalAccessException, InvocationTargetException {
+        InvoiceBlue blue = new InvoiceBlue();
+        blue.setSellName("JACK测试企业12");
+        blue.setSellerTaxpayerNum("911101076819661132");
+        blue.setSellerAddress("");
+        blue.setSellerTel("");
+        blue.setSellerBankName("");
+        blue.setSellerBankAccount("");
+        blue.setTitleType(1);
+        blue.setBuyerTitle("海南高灯科技");
+        blue.setBuyerTaxpayerNum("");
+        blue.setBuyerAddress("");
+        blue.setBuyerBankAccount("");
+        blue.setBuyerBankName("");
+        blue.setBuyerPhone("");
+        blue.setBuyerEmail("");
+        blue.setTakerPhone("");
+        blue.setOrderId("4651321213312");
+        blue.setInvoiceTypeCode("032");
+        blue.setCallbackUrl("https://www.baidu.com/xxs/callback");
+        blue.setDrawer("lx");
+        blue.setPayee("收到否");
+        blue.setChecker("jack");
+        blue.setUserOpenid("41345");
+        blue.setSpecialInvoiceKind("");
+        blue.setTerminalCode("");
+        blue.setAmountHasTax(9508);
+        blue.setTaxAmount(864);
+        blue.setAmountWithoutTax(8644);
+        blue.setRemark("sdd");
 
-            ArrayList<JSONObject> items = new ArrayList<JSONObject>();
+        InvoiceBlueGoodsInfo item = new InvoiceBlueGoodsInfo();
+        item.setName("海鲜真划算");
+        item.setTaxCode("1010499000000000000");
+        item.setTaxType("");
+        item.setModels("xyz");
+        item.setUnit("个");
+        item.setTotalPrice(8644);
+        item.setTotal("5");
+        item.setPrice("17.288");
+        item.setTaxRate(100);
+        item.setTaxAmount(864);
+        item.setDiscount(0);
+        item.setZeroTaxFlag("");
+        item.setPreferentialPolicyFlag("");
+        item.setVatSpecialManagement("");
 
-            JSONObject item = new JSONObject();
-            item.put("name", "咨询服务22");
-            item.put("tax_code", "3020202000000000000");
-            item.put("tax_type", "");
-            item.put("models", "xyz");
-            item.put("unit", "个");
-            item.put("total_price", 8644);
-            item.put("total", "5");
-            item.put("price", "17.288");
-            item.put("tax_rate", 100);
-            item.put("tax_amount", 864);
-            item.put("discount", 0);
-            item.put("zero_tax_flag", "");
-            item.put("preferential_policy_flag", "");
-            item.put("vat_special_management", "");
-            items.add(item);
-            jsonObject.put("items", items);
-
-            JSONObject item2 = new JSONObject();
-            item2.put("name", "咨询服务");
-            item2.put("tax_code", "3720202000000000000");
-            item2.put("tax_type", "");
-            item2.put("models", "xyz");
-            item2.put("unit", "个");
-            item2.put("total_price", 8644);
-            item2.put("total", "5");
-            item2.put("price", "17.288");
-            item2.put("tax_rate", 100);
-            item2.put("tax_amount", 864);
-            item2.put("discount", 0);
-            item2.put("zero_tax_flag", "");
-            item2.put("preferential_policy_flag", "");
-            item2.put("vat_special_management", "");
-            items.add(item2);
-            jsonObject.put("items", items);
-
-
-
-            jsonObject.put("aaa", "~");//示例，可以忽略，用于检测特殊情况签名异常
-            jsonObject.put("family", "fff@dd.c*+ om");//示例，可以忽略，用于检测特殊情况签名异常
-            jsonObject.put("name", "sss");//示例，可以忽略，用于检测特殊情况签名异常
-            jsonObject.put("sdfsdfsdf", "sss");//示例，可以忽略，用于检测特殊情况签名异常
-            JSONObject result = sdk.httpPost("/invoice/blue", jsonObject);
-            return result;
+        ArrayList<InvoiceBlueGoodsInfo> goodsInfos = new ArrayList<InvoiceBlueGoodsInfo>();
+        goodsInfos.add(item);
+       // goodsInfos.add(item);
+        blue.setItems(goodsInfos);
+        JSONObject result = sdk.invoiceBlue(blue);
+        return result;
     }
 }
+
