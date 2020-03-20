@@ -2,7 +2,7 @@
 ===============================
 支持JDK >= 1.7
 
-[下载jar包](https://golden-static-files-1258944054.cos.ap-guangzhou.myqcloud.com/openPlatfrom/developerPlatform-1.0.3-jar-with-dependencies.jar)
+[下载jar包](https://golden-static-files-1258944054.cos.ap-guangzhou.myqcloud.com/developerPlatform/developerPlatform-1.0.3-jar-with-dependencies.jar)
   
 导入jar包
 
